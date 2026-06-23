@@ -1,19 +1,3 @@
-
-' $DYNAMIC
-'FAST FIRE BY DANNY BEARDSLEY
-' COMPILE ME! 10 TIMES FASTER
-' COMPILE ME! 10 TIMES FASTER
-' COMPILE ME! 10 TIMES FASTER
-'_______/----------------\______________
-'This is the fastest fire routine that i have ever seen.
-'If you COMPILE it will be !!!10 times faster!!!!
-'This is not true fire it only spreads to the left
-'If you want more code for other amazing feats then
-'----------------------------
-'Email:       dsb@cyberdude.com
-'Homepage:    www.dnai.com/~beards
-' FFFRRREEEEEEWWWAAARRREEE (just put my name in somewhere if you use it)
-
 SCREEN 13
 CLS
   FOR t% = 0 TO 63
