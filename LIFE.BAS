@@ -34,9 +34,7 @@ WINDOW (0, 0)-(80, 80)
 DO
 
 'Counts the surrounding cell tally%
-'Then applies the Rules to the cell
-
-'Draws the matrix
+'apply the Rules to the cell
 
 y% = 0
 
@@ -56,17 +54,16 @@ DO
 		IF matrix(now%, x%, y% - 1) THEN tally% = tally% + 1
 		IF matrix(now%, x% + 1, y% - 1) THEN tally% = tally% + 1
 
-		'Death for too lonely or too crowded
+		'draw output, and death for too lonely or too crowded
 		IF matrix(now%, x%, y%) THEN
+			LINE (x%, y%)-(x% + 1, y% + 1), 1, BF
 			IF tally% < 2 OR tally% > 3 THEN matrix(NOT now%, x%, y%) = 0 ELSE matrix(NOT now%, x%, y%) = -1
 		END IF
 
-		'Birth when condition is right
+		'birth
 		IF NOT matrix(now%, x%, y%) THEN
 			IF tally% = 3 THEN matrix(NOT now%, x%, y%) = -1 ELSE matrix(NOT now%, x%, y%) = 0
 		END IF
-
-		IF matrix(now%, x%, y%) THEN LINE (x%, y%)-(x% + 1, y% + 1), 1, BF
 
 		x% = x% + 1
 
