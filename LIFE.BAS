@@ -1,5 +1,5 @@
 'John Conway's Game of Life
-'Original was programmed by Ben Wagner
+'Original programmed by Ben Wagner
 
 RANDOMIZE TIMER
 
