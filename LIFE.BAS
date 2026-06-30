@@ -1,5 +1,5 @@
 'John Conway's Game of Life
-'Original programmed by Ben Wagner
+'Original was programmed by Ben Wagner
 
 RANDOMIZE TIMER
 
@@ -9,7 +9,7 @@ DIM matrix(-1 TO 0, -1 TO 81, -1 TO 81) AS INTEGER
 
 now% = 0
 
-'Randomise the current cells matrix(now%,,)
+'Randomize the current cells matrix(now%,,)
 
 y% = 0
 DO
@@ -32,32 +32,21 @@ WINDOW (0, 0)-(80, 80)
 
 'Main Loop
 DO
+
+'Counts the surrounding cell tally%
+'Then applies the Rules to the cell
+
 'Draws the matrix
+
 y% = 0
 
 CLS
 
 DO
 	x% = 0
-			 
-	DO
-		IF matrix(now%, x%, y%) THEN LINE (x%, y%)-(x% + 1, y% + 1), 1, BF
-		x% = x% + 1
-	LOOP UNTIL x% > 80
-	   
-	y% = y% + 1
-
-LOOP UNTIL y% > 80
-
-
-'Counts the surrounding cell tally%
-'Then applies the Rules to the cell
-y% = 0
-DO
-	x% = 0
 	DO
 		tally% = 0
-		
+
 		IF matrix(now%, x% - 1, y% + 1) THEN tally% = tally% + 1
 		IF matrix(now%, x%, y% + 1) THEN tally% = tally% + 1
 		IF matrix(now%, x% + 1, y% + 1) THEN tally% = tally% + 1
@@ -67,20 +56,22 @@ DO
 		IF matrix(now%, x%, y% - 1) THEN tally% = tally% + 1
 		IF matrix(now%, x% + 1, y% - 1) THEN tally% = tally% + 1
 
-		'Death for too lonely or too crowded.
+		'Death for too lonely or too crowded
 		IF matrix(now%, x%, y%) THEN
 			IF tally% < 2 OR tally% > 3 THEN matrix(NOT now%, x%, y%) = 0 ELSE matrix(NOT now%, x%, y%) = -1
 		END IF
 
-		'Birth
+		'Birth when condition is right
 		IF NOT matrix(now%, x%, y%) THEN
 			IF tally% = 3 THEN matrix(NOT now%, x%, y%) = -1 ELSE matrix(NOT now%, x%, y%) = 0
 		END IF
 
+		IF matrix(now%, x%, y%) THEN LINE (x%, y%)-(x% + 1, y% + 1), 1, BF
+
 		x% = x% + 1
-	   
+
 	LOOP UNTIL x% > 80
-	  
+	   
 	y% = y% + 1
 
 LOOP UNTIL y% > 80
@@ -92,4 +83,3 @@ PCOPY 0, 1
 now% = NOT now%
 
 LOOP UNTIL LEN(INKEY$)
-
